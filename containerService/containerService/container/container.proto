@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package containerService;
+
+service ContainerService{
+    rpc CreateContainer(ContainerCreationResponse) returns (ContainerCreationResponse) {}
+    rpc DeleteContainer(ContainerDeletionRequest) returns (ContainerDeletionResponse) {}
+}
+
+message ContainerCreationRequest{
+}
+
+message ContainerDeletionRequest{
+    string container_id = 1;
+}
+
+message ContainerCreationResponse {
+    string container_id = 1;
+    bool result = 2;
+}
+message ContainerDeletionResponse {
+    string container_id = 1;
+    bool result = 2;
+}

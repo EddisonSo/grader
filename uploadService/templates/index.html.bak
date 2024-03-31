@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script>
+      $(function () {
+
+        $('form').on('submit', function (e) {
+
+          e.preventDefault();
+
+          $.ajax({
+            type: 'post',
+            url: 'http://192.168.1.100:5050/get',
+            data: $('form').serialize(),
+            success: function () {
+              alert('first api was submitted');
+            }
+          });
+
+           $.ajax({
+            type: 'post',
+            url: 'secondAPIurl',
+            data: $('form').serialize(),
+            success: function () {
+              alert('second api submitted');
+            }
+          });
+
+        });
+
+      });
+    </script>
+  </head>
+  <body>
+    <form>
+      <input name="time" value="value">
+      <input name="date" value="value">
+      <input name="submit" type="submit" value="Submit">
+    </form>
+  </body>
+</html>
+

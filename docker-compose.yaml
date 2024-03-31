@@ -1,0 +1,21 @@
+version: "3"
+services:
+  postgres:
+    build:
+      context: .
+      dockerfile: ./db/db.dockerfile 
+    image: "upload-db"
+    container_name: "upload-db" 
+    environment:
+      POSTGRES_DB: "upload-db"
+      POSTGRES_USER: "grader"
+      POSTGRES_PASSWORD: "password" 
+      PGDATA: "/data/grader"
+    volumes:
+       - upload-db:/data/grader
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+volumes:
+  upload-db:
+    external: true
